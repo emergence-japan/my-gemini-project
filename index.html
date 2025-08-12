@@ -3,1126 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="個人事業主向け生成AIブートキャンプ。東京大学大学院情報学環 藤井研究室 AI担当講師による、プロンプト技術からWebサイト制作・アプリ開発まで学べる1年限定のコース。">
-    <meta name="keywords" content="生成AI,ブートキャンプ,個人事業主,プロンプト,AI活用,Webサイト制作,アプリ開発,商工会">
-    <title>生成AIブートキャンプ | 今回限り開催 - 個人事業主向けAI活用マスター講座</title>
-    
-    <style>
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background-color: #fff;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid #eee;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2563eb;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            display: inline-block;
-            margin-bottom: 30px;
-            font-weight: 600;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 30px;
-            line-height: 1.2;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
-            border-radius: 2px;
-        }
-
-        /* Authority Section */
-        .authority {
-            background: #f8fafc;
-        }
-
-        .authority-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .authority-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .instructor-profile {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .instructor-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .instructor-info h3 {
-            font-size: 1.8rem;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .instructor-title {
-            color: #2563eb;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .achievements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .achievement-item {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #2563eb;
-        }
-
-        .achievement-item h4 {
-            color: #2563eb;
-            margin-bottom: 10px;
-        }
-
-        .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .location-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Curriculum Section */
-        .curriculum-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .curriculum-step {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .curriculum-step:hover {
-            transform: translateY(-5px);
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: 20px;
-        }
-
-        .step-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .course-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .course-option {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 30px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .course-option:hover {
-            border-color: #2563eb;
-            background: #f1f5f9;
-        }
-
-        .course-option h4 {
-            color: #2563eb;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        /* Features Section */
-        .features {
-            background: #f8fafc;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .testimonials .section-title {
-            color: white;
-        }
-
-        .testimonials .section-title::after {
-            background: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Pricing Section */
-        .pricing {
-            background: white;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 25px;
-            padding: 50px;
-            margin: 0 auto;
-            max-width: 500px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            border: 3px solid #2563eb;
-            position: relative;
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 10px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-        }
-
-        .price {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #2563eb;
-            margin: 20px 0;
-        }
-
-        .price-subtitle {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            color: #10b981;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* FAQ Section */
-        .faq {
-            background: #f8fafc;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-question {
-            padding: 25px;
-            background: white;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: #f8fafc;
-        }
-
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 25px;
-            max-height: 200px;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Contact Form */
-        .contact {
-            background: white;
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #f8fafc;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .form-submit {
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: #1e293b;
-            color: white;
-            padding: 50px 0 30px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .instructor-profile {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .curriculum-overview,
-            .course-options {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .locations-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .pricing-card {
-                padding: 30px 20px;
-            }
-
-            .price {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .mt-30 { margin-top: 30px; }
-        .mb-30 { margin-bottom: 30px; }
-        
-        /* Animation Classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Scroll Progress Bar */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
-            z-index: 9999;
-            transition: width 0.3s ease;
-        }
-    </style>
+    <title>生成AIブートキャンプ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="progress-bar"></div>
-
     <header>
-        <nav class="container">
-            <div class="logo">生成AIブートキャンプ</div>
-            <ul class="nav-links">
-                <li><a href="#about">講師紹介</a></li>
-                <li><a href="#curriculum">カリキュラム</a></li>
-                <li><a href="#features">特徴</a></li>
-                <li><a href="#pricing">料金</a></li>
-                <li><a href="#contact">申込</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <img src="https://emergence-japan.com/wp-content/uploads/2025/08/AI-Boot-Camp01.png" alt="生成AIブートキャンプ ロゴ" class="header-logo">
+            <h1>生成AIブートキャンプ</h1>
+        </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section id="first-view">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge">今回限り開催 - 2025年8月12日〜2026年8月12日</div>
-                    <h1>AI時代を生き抜く<br>生成AIブートキャンプ</h1>
-                    <p class="hero-subtitle">東京大学大学院 藤井研究室サポートスタッフによる本格指導で<br>プロンプト技術からWebサイト制作・アプリ開発まで習得</p>
-                    <a href="https://1lejend.com/stepmail/kd.php?no=fUbGuxIRnM" class="cta-button" target="_blank">今すぐ申し込む</a>
-                </div>
+                <div class="hero-main-title-line">
+            <img src="https://emergence-japan.com/wp-content/uploads/2025/08/AI-Boot-Camp01.png" alt="生成AIブートキャンプ アイコン" class="hero-icon-image">
+            <h2>生成AIブートキャンプ始動！</h2>
+        </div>
+        <p class="event-period">開催期間: 2025年8月12日 - 2026年8月12日</p>
+        <p>そろそろ生成AIをしっかり学びませんか？</p>
+                <p>超基礎からVibe Codingまで完全網羅 日本一分かりやすいAI学習コミュニティ</p>
+                <p>年間11,000円・<span id="daily-cost-1"></span>でAI時代の勝ち組になれます</p>
+                <a href="https://1lejend.com/stepmail/kd.php?no=fUbGuxIRnM" class="cta-button">今すぐ参加する</a>
             </div>
         </section>
 
-        <section id="about" class="authority">
+        <section id="problem" class="section list-section">
             <div class="container">
-                <h2 class="section-title">講師紹介</h2>
-                <div class="authority-card fade-in">
-                    <div class="instructor-profile">
-                        <div class="instructor-image">HY</div>
-                        <div class="instructor-info">
-                            <h3>浜田 陽介</h3>
-                            <p class="instructor-title">東京大学大学院情報学環 藤井研究室 AI業務サポート</p>
-                            <p>藤井研究室でAIを使ったアプリ開発をサポートしています。全国商工会議所・商工会 生成AIセミナー講師として、個人事業主のAI活用を支援。AI対話プログラミング指導の豊富な実績を持つ。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="achievements">
-                        <div class="achievement-item">
-                            <h4>🏢 実務経験</h4>
-                            <p>全国商工会議所・商工会での講師経験</p>
-                        </div>
-                        <div class="achievement-item">
-                            <h4>💼 指導実績</h4>
-                            <p>個人事業主向けAI活用セミナー多数開催</p>
-                        </div>
-                        <div class="achievement-item">
-                            <h4>🔧 技術指導</h4>
-                            <p>AI対話プログラミング指導のエキスパート</p>
-                        </div>
-                    </div>
-
-                    <h4 style="margin-top: 40px; margin-bottom: 20px; color: #2563eb;">全国実績（商工会議所・商工会）</h4>
-                    <div class="locations-grid">
-                        <div class="location-item">大阪府商工会連合会</div>
-                        <div class="location-item">大阪商工会議所</div>
-                        <div class="location-item">堺商工会議所</div>
-                        <div class="location-item">松原商工会議所</div>
-                        <div class="location-item">対馬商工会</div>
-                        <div class="location-item">南島原商工会</div>
-                        <div class="location-item">高島市商工会</div>
-                        <div class="location-item">富山市北商工会</div>
-                        <div class="location-item">尾張旭市商工会</div>
-                        <div class="location-item">小矢部商工会</div>
-                        <div class="location-item">湯浅町商工会</div>
-                        <div class="location-item">中能登町商工会</div>
-                        <div class="location-item">立山舟橋商工会</div>
-                        <div class="location-item">有田川町商工会</div>
-                        <div class="location-item">宝達志水町商工会</div>
-                        <div class="location-item">上市町商工会</div>
-                        <div class="location-item">他多数</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="curriculum" class="curriculum">
-            <div class="container">
-                <h2 class="section-title">カリキュラム構成</h2>
-                <div class="curriculum-overview">
-                    <div class="curriculum-step fade-in">
-                        <div class="step-header">
-                            <div class="step-number">1</div>
-                            <div>
-                                <div class="step-title">プロンプト技術マスター</div>
-                                <p>1-4週目（全員共通）</p>
-                            </div>
-                        </div>
-                        <ul style="list-style: none; padding: 0;">
-                            <li>✓ 基礎プロンプト技術</li>
-                            <li>✓ 中級プロンプト応用</li>
-                            <li>✓ 上級プロンプト戦略</li>
-                            <li>✓ 実践的応用テクニック</li>
-                        </ul>
-                    </div>
-
-                    <div class="curriculum-step fade-in">
-                        <div class="step-header">
-                            <div class="step-number">2-3</div>
-                            <div>
-                                <div class="step-title">専門コース選択</div>
-                                <p>5-11週目（選択制）</p>
-                            </div>
-                        </div>
-                        <div class="course-options">
-                            <div class="course-option">
-                                <h4>🌐 WEBサイト・アプリ制作コース</h4>
-                                <p><strong>ステップ2（5-8週目）:</strong><br>AI対話でWebサイト・LP制作、公開</p>
-                                <p><strong>ステップ3（9-11週目）:</strong><br>AI対話でアプリ開発、運用開始</p>
-                            </div>
-                            <div class="course-option">
-                                <h4>🤖 AI活用マスターコース</h4>
-                                <p><strong>ステップ2（5-8週目）:</strong><br>NotebookLM、Perplexity等最新ツール習得、マルチモーダルAI活用</p>
-                                <p><strong>ステップ3（9-11週目）:</strong><br>deep-research、GPTs、Claude Projects等高度活用、専用システム構築</p>
-                            </div>
-                        </div>
-                        <p style="text-align: center; margin-top: 20px; font-weight: 600; color: #2563eb;">
-                            ※両方のコース選択可能（追加料金なし）
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <div class="container">
-                <h2 class="section-title">学習環境・サポート体制</h2>
-                <div class="features-grid">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">⏰</div>
-                        <h3>忙しい方でも安心</h3>
-                        <p>平日30-40分、週末60-90分の効率的な学習設計。個人事業主の忙しいスケジュールに配慮した時間設計です。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">💬</div>
-                        <h3>Discord + Notion</h3>
-                        <p>Discordコミュニティで仲間と交流し、Notion教材でいつでも学習可能。質問・相談もリアルタイムで対応。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🎯</div>
-                        <h3>実践重視の内容</h3>
-                        <p>理論だけでなく、実際にWebサイトやアプリを作成・公開まで行う実践的なカリキュラム構成。</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon">🔄</div>
-                        <h3>継続的サポート</h3>
-                        <p>1年間を通して講師が直接指導。分からないことがあれば、いつでも質問・相談が可能です。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="section-title">受講者の声</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card fade-in">
-                        <p class="testimonial-text">"プログラミング未経験でしたが、AIの力で本格的なWebサイトを作成できました。事業の幅が大きく広がりました。"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">田</div>
-                            <div>
-                                <p><strong>田中様</strong></p>
-                                <p>コンサルティング業</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card fade-in">
-                        <p class="testimonial-text">"最新のAIツールを体系的に学べて、業務効率が3倍になりました。投資した以上の価値がありました。"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">佐</div>
-                            <div>
-                                <p><strong>佐藤様</strong></p>
-                                <p>マーケティング業</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card fade-in">
-                        <p class="testimonial-text">"同じ目標を持つ仲間ができて、モチベーション維持ができました。一人では挫折していたと思います。"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">山</div>
-                            <div>
-                                <p><strong>山田様</strong></p>
-                                <p>デザイン業</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="pricing">
-            <div class="container">
-                <h2 class="section-title">料金・期間</h2>
-                <div class="pricing-card fade-in">
-                    <div class="pricing-badge">今回限り開催</div>
-                    <div class="price">¥11,000</div>
-                    <p class="price-subtitle">税込・1年間通し料金</p>
-                    <ul class="pricing-features">
-                        <li>開催期間：2025年8月12日〜2026年8月12日</li>
-                        <li>入会金：11,000円（税込）のみ</li>
-                        <li>月会費：なし</li>
-                        <li>全カリキュラムへのアクセス</li>
-                        <li>Discord コミュニティ参加</li>
-                        <li>Notion 教材使い放題</li>
-                        <li>講師による直接指導・質問対応</li>
-                        <li>両コース選択可能（追加料金なし）</li>
+                <div class="card">
+                    <h2>こんな不安、ありませんか？</h2>
+                    <ul>
+                        <li>生成AIが話題だけど、何から始めればいいか分からない</li>
+                        <li>ChatGPTを触ってみたけど、うまく使えない</li>
+                        <li>周りがAIを使いこなしていて焦っている</li>
+                        <li>このまま時代に取り残されそうで不安</li>
                     </ul>
-                    <a href="https://1lejend.com/stepmail/kd.php?no=fUbGuxIRnM" class="cta-button mt-30" target="_blank">今すぐ申し込む</a>
+                    <p><strong>その不安、このコミュニティで解決できます。</strong></p>
                 </div>
             </div>
         </section>
 
-        <section class="faq">
+        <section id="solution" class="section list-section section-bg">
             <div class="container">
-                <h2 class="section-title">よくある質問</h2>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">
-                        プログラミング経験が全くありませんが大丈夫ですか？
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>はい、全く問題ありません。本コースはプログラミング未経験の個人事業主の方を対象としており、AIを使った対話型の開発手法を学ぶため、従来のプログラミング知識は必要ありません。</p>
-                    </div>
+                <h2>日本一分かりやすく、役に立つ<br>生成AI学習コミュニティの誕生</h2>
+                <div class="card">
+                    <ul>
+                        <li>【完全網羅】超基礎 → Vibe Coding</li>
+                        <li>【自分ペース】途中参加OK・無理なく継続</li>
+                        <li>【仲間がいる】同世代コミュニティで安心</li>
+                        <li>【圧倒的コスパ】年間11,000円・<span id="daily-cost-2"></span></li>
+                        <li>【実績ある指導】東大×全国セミナー講師</li>
+                    </ul>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">
-                        平日は忙しいのですが、学習を継続できますか？
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>平日30-40分、週末60-90分の学習設計となっており、忙しい個人事業主の方でも無理なく継続できる内容です。また、教材はいつでもアクセス可能です。</p>
+            </div>
+        </section>
+
+        <section id="vibe-coding" class="section">
+            <div class="container">
+                <div class="card">
+                    <h2>日本語で話すだけでアプリが作れる<br>革命的な技術「Vibe Coding」</h2>
+                    <div class="vibe-coding-demo">
+                        <img src="https://emergence-japan.com/wp-content/uploads/2025/08/receiptapp.jpg" alt="Vibe Coding デモ画面">
                     </div>
+                    <ul>
+                        <li>「家計管理アプリを作って」</li>
+                        <li>「予約システムが欲しい」</li>
+                        <li>「顧客管理ツールを作って」</li>
+                    </ul>
+                    <p>こんな風に日本語で話すだけで、本格的なアプリやシステムが作れます。</p>
+                    <p><em>実は、今ご覧のこのページもVibe Codingでたった3時間で作成しました。</em></p>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">
-                        両方のコースを受講することはできますか？
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>はい、追加料金なしで両方のコース（WEBサイト・アプリ制作コース、AI活用マスターコース）を受講いただけます。</p>
-                    </div>
+            </div>
+        </section>
+
+        <section id="learning-content" class="section section-bg">
+            <div class="container">
+                <h2>最短3ヶ月で習得できるコース<br>でも1年間の期間中は完全に自分のペースでOK</h2>
+                <div class="card">
+                    <ol>
+                        <li>
+                            <h3>1ヶ月目: プロンプト基礎マスター</h3>
+                            <p class="timeline-item-description">💬 AIとの会話技術を完全習得</p>
+                        </li>
+                        <li>
+                            <h3>2-3ヶ月目: 選べる専門コース</h3>
+                            <ul>
+                                <li>🔥 Vibe Coding: 日本語でアプリ開発</li>
+                                <li>🛠️ AIツール特化: 業務効率化の極意</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>4-12ヶ月目: 継続成長期間</h3>
+                            <p class="timeline-item-description">🚀 最新のAIや機能をキャッチアップ</p>
+                        </li>
+                    </ol>
+                    <p>※急ぐ必要はありません。期間中かけてゆっくり学習してもOK</p>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">
-                        サポート体制はどのようになっていますか？
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Discord コミュニティで講師が直接質問にお答えします。また、受講生同士の情報交換も活発に行われており、学習のモチベーション維持にも繋がります。</p>
-                    </div>
+            </div>
+        </section>
+
+        <section id="community-value" class="section list-section">
+            <div class="container">
+                <h2>なぜ一人では挫折するのか？<br>なぜコミュニティなら続くのか？</h2>
+                <div class="card">
+                    <ul>
+                        <li>同世代の仲間と一緒だから安心</li>
+                        <li>分からないことを気軽に質問できる</li>
+                        <li>毎日の小さな成長を共有できる</li>
+                        <li>自分のペースで無理なく継続</li>
+                        <li>1年間、ずっとサポートが続く</li>
+                    </ul>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">
-                        今回限りということですが、本当に継続開催されないのですか？
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>はい、本コースは2025年8月12日〜2026年8月12日の1年間限定開催です。同じ内容での継続開催は予定しておりませんので、この機会をお見逃しなく。</p>
+            </div>
+        </section>
+
+        <section id="instructor" class="section list-section section-bg">
+            <div class="container">
+                <h2>なぜ「日本一分かりやすい」と言えるのか？</h2>
+                <div class="card">
+                    <div class="instructor-content">
+                        <div class="instructor-details">
+                            <img src="https://emergence-japan.com/wp-content/uploads/2021/07/BR7A0153_Original-scaled-e1627096478522.jpg" alt="講師：浜田陽介" class="instructor-photo">
+                            <div>
+                                <h3>講師：浜田陽介</h3>
+                                <ul>
+                                    <li>東京大学でAI活用支援</li>
+                                    <li>全国セミナー実績多数</li>
+                                    <li>生成AIパスポート取得</li>
+                                </ul>
+                                <p><strong>= 最先端技術 × 分かりやすい指導</strong></p>
+                                <p>実際に全国で教えてきた「現場で使える」技術だけを厳選</p>
+                            </div>
+                        </div>
+                        <div class="instructor-badge">
+                            <img src="https://emergence-japan.com/wp-content/uploads/2025/08/AIpass.png" alt="生成AIパスポート ロゴ">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="price" class="section list-section">
             <div class="container">
-                <h2 class="section-title">お申し込み</h2>
-                <div class="text-center fade-in">
-                    <p style="font-size: 1.2rem; margin-bottom: 40px; color: #666;">
-                        今回限りの特別なコミュニティへの参加をお待ちしております。<br>
-                        下記ボタンより申込ページにお進みください。
-                    </p>
-                    <a href="https://1lejend.com/stepmail/kd.php?no=fUbGuxIRnM" class="cta-button" style="font-size: 1.3rem; padding: 20px 50px;" target="_blank">
-                        申し込みページへ進む
-                    </a>
+                <h2>年間11,000円<br>2026年8月12日まで学習し放題</h2>
+                <div class="card">
+                    <ul>
+                        <li>途中参加OK（いつからでも開始可能）</li>
+                        <li>完全自分ペース学習（1年間の猶予）</li>
+                        <li>最短3ヶ月習得コース（急がなくてもOK）</li>
+                        <li>月2回オンラインセミナー（アーカイブあり）</li>
+                        <li>世界で6億人が使うDiscordコミュニティ</li>
+                        <li>1年間のコミュニティサポート</li>
+                        <li>超基礎からVibe Codingまで完全習得</li>
+                    </ul>
                 </div>
+            </div>
+        </section>
+
+        <section id="application-method" class="section section-bg">
+            <div class="container">
+                <div class="card" style="text-align: center;">
+                    <h2>お申込み方法</h2>
+                    <p><strong>銀行振込</strong></p>
+                    <p>※振込手数料はお客様負担となります</p>
+                    <p>お申込み後、振込先をご案内いたします</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2>FAQ（よくある質問）</h2>
+                <div class="card">
+                    <div class="faq-item">
+                        <dt>Q: パソコン初心者でも大丈夫ですか？</dt>
+                        <dd>A: はい、基本的な操作ができれば問題ありません。</dd>
+                    </div>
+                    <div class="faq-item">
+                        <dt>Q: 途中から参加しても追いつけますか？</dt>
+                        <dd>A: 途中参加OK設計なので、いつからでも安心して始められます。</dd>
+                    </div>
+                    <div class="faq-item">
+                        <dt>Q: 初心者ですが学習ペースについて行けますか？</dt>
+                        <dd>A: 完全に自分のペースで進められます。急ぐ必要はありません。</dd>
+                    </div>
+                    <div class="faq-item">
+                        <dt>Q: どのような年代の方が参加していますか？</dt>
+                        <dd>A: 幅広い年代の方にご参加いただいています。</dd>
+                    </div>
+                    <div class="faq-item">
+                        <dt>Q: 質問はいつでもできますか？</dt>
+                        <dd>A: はい、Discordコミュニティで365日質問可能です。</dd>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-cta" class="section">
+            <div class="container" style="text-align: center;">
+                <h2>AI時代に取り残されるか、勝ち組になるか</h2>
+                <p>その分かれ道は「今日の決断」です。</p>
+                <p><strong>年間11,000円で人生が変わります。</strong></p>
+                <a href="https://1lejend.com/stepmail/kd.php?no=fUbGuxIRnM" class="cta-button">今すぐ参加して、AI時代を勝ち抜く</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-bg">
+            <div class="container" style="text-align: center;">
+                <h2>お問い合わせ先</h2>
+                <p>エマージェンス・ジャパン合同会社</p>
+                <p>info@emergence-japan.com</p>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="#about">講師紹介</a>
-                    <a href="#curriculum">カリキュラム</a>
-                    <a href="#features">特徴</a>
-                    <a href="#pricing">料金</a>
-                    <a href="#contact">申込</a>
-                </div>
-                <p>&copy; 2025 生成AIブートキャンプ. All rights reserved.</p>
-                <p>エマージェンス・ジャパン合同会社</p>
-            </div>
+            <p>運営会社：エマージェンス・ジャパン合同会社</p>
+            <p>代表：浜田陽介</p>
+            <p><a href="#">特定商取引法に基づく表示</a> | <a href="#">プライバシーポリシー</a></p>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // Scroll progress bar
-            function updateScrollProgress() {
-                const scrollTop = window.pageYOffset;
-                const docHeight = document.body.scrollHeight - window.innerHeight;
-                const scrollPercent = (scrollTop / docHeight) * 100;
-                document.querySelector('.progress-bar').style.width = scrollPercent + '%';
-            }
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 80;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Fade in animation on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-            
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // FAQ accordion
-            document.querySelectorAll('.faq-question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const faqItem = question.parentElement;
-                    const isActive = faqItem.classList.contains('active');
-                    
-                    // Close all FAQ items
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    
-                    // Open clicked item if it wasn't active
-                    if (!isActive) {
-                        faqItem.classList.add('active');
-                    }
-                });
-            });
-            
-            
-            // Header background change on scroll
-            let lastScrollTop = 0;
-            function handleHeaderScroll() {
-                const header = document.querySelector('header');
-                const scrollTop = window.pageYOffset;
-                
-                if (scrollTop > 100) {
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
-                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-                } else {
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
-                    header.style.boxShadow = 'none';
-                }
-                
-                lastScrollTop = scrollTop;
-            }
-            
-            // Event listeners
-            window.addEventListener('scroll', () => {
-                updateScrollProgress();
-                handleHeaderScroll();
-            });
-            
-            // Initial calls
-            updateScrollProgress();
-            handleHeaderScroll();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
