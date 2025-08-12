@@ -443,3 +443,185 @@ footer a {
         text-align: center;
     }
 }
+
+/* 10. Enhanced Mobile Responsive Design */
+@media (max-width: 480px) {
+    /* Container adjustments for very small screens */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Typography adjustments */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 40px; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Hero section mobile optimizations */
+    #first-view {
+        padding: 60px 0;
+    }
+    
+    #first-view h2 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+    }
+    
+    #first-view h3 {
+        font-size: 1.3rem;
+    }
+    
+    #first-view p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    
+    .hero-icon-image {
+        height: 35px;
+    }
+    
+    /* Card optimizations */
+    .card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* Section padding reduction */
+    .section {
+        padding: 50px 0;
+    }
+    
+    /* Button optimizations for touch */
+    .cta-button {
+        padding: 16px 30px;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        display: block;
+        margin: 20px auto;
+    }
+    
+    /* List items adjustments */
+    .list-section li {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        align-items: flex-start;
+    }
+    
+    .list-section li::before {
+        font-size: 1.2rem;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+    
+    /* Learning content adjustments */
+    #learning-content .card {
+        padding: 25px 20px;
+    }
+    
+    #learning-content > ol > li {
+        padding-left: 55px;
+        margin-bottom: 30px;
+    }
+    
+    #learning-content > ol > li::before {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    /* Vibe coding section */
+    #vibe-coding ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    #vibe-coding li {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Instructor section mobile */
+    .instructor-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    #instructor .instructor-badge img {
+        max-width: 120px;
+    }
+    
+    /* FAQ adjustments */
+    #faq dt {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    #faq dd {
+        padding: 0 12px;
+    }
+    
+    #faq .faq-item.active dd {
+        padding: 12px;
+    }
+    
+    /* Header adjustments */
+    header {
+        padding: 0.8rem 0;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .header-logo {
+        height: 30px;
+    }
+    
+    /* Event period badge */
+    #first-view .event-period {
+        font-size: 1rem;
+        padding: 8px 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* Footer adjustments */
+    footer {
+        padding: 30px 0 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Extra small screens (like iPhone SE) */
+    .container {
+        padding: 0 12px;
+    }
+    
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+    
+    #first-view h2 {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .cta-button {
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+    
+    .hero-main-title-line {
+        gap: 8px;
+    }
+    
+    .hero-icon-image {
+        height: 30px;
+    }
+}
