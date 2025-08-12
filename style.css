@@ -228,6 +228,16 @@ header h1 {
     border: 5px solid var(--white-color);
 }
 
+.demo-description {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
 #vibe-coding ul {
     list-style: none;
     padding: 0;
@@ -564,6 +574,12 @@ footer a {
         font-size: 0.95rem;
         width: 100%;
         text-align: center;
+    }
+    
+    .demo-description {
+        font-size: 1rem;
+        margin-top: 12px;
+        margin-bottom: 15px;
     }
     
     /* Instructor section mobile */
