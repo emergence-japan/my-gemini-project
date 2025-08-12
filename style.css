@@ -372,7 +372,18 @@ footer a {
 }
 
 /* 9. Responsive Design */
+
+/* Mobile line breaks - hidden on desktop */
+.mobile-br {
+    display: none;
+}
+
 @media (max-width: 768px) {
+    /* Show mobile line breaks on tablets and smaller */
+    .mobile-br {
+        display: inline;
+    }
+    
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
     #first-view h2 { font-size: 2.8rem; }
