@@ -391,6 +391,16 @@ footer a {
     .card {
         padding: 30px;
     }
+    
+    /* Header adjustments for tablets */
+    header h1 {
+        font-size: 1.6rem;
+        white-space: nowrap;
+    }
+    
+    .header-logo {
+        height: 28px;
+    }
 }
 
 /* Event Period Badge in Hero Section */
@@ -585,11 +595,12 @@ footer a {
     }
     
     header h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        white-space: nowrap; /* Prevent line breaks */
     }
     
     .header-logo {
-        height: 30px;
+        height: 25px;
     }
     
     /* Event period badge */
@@ -634,5 +645,14 @@ footer a {
     
     .hero-icon-image {
         height: 30px;
+    }
+    
+    /* Even smaller header text for very small screens */
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .header-logo {
+        height: 22px;
     }
 }
