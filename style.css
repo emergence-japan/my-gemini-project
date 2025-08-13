@@ -673,3 +673,142 @@ footer a {
         height: 22px;
     }
 }
+
+/* Seminar Schedule Section */
+#seminar-schedule .card {
+    text-align: left;
+}
+
+.schedule-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.schedule-list dt {
+    font-weight: 600;
+    color: var(--primary-color);
+    white-space: nowrap;
+    padding-top: 15px;
+    border-top: 1px solid var(--light-color);
+}
+
+.schedule-list dd {
+    margin-left: 0;
+    padding-top: 15px;
+    border-top: 1px solid var(--light-color);
+}
+
+/* First item no border */
+.schedule-list dt:first-of-type,
+.schedule-list dd:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+
+.schedule-note {
+    text-align: center;
+    font-style: italic;
+    opacity: 0.9;
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .schedule-list {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .schedule-list dt {
+        margin-bottom: 5px;
+        border-top: 1px solid var(--light-color);
+        padding-top: 15px;
+    }
+    .schedule-list dd {
+        padding-left: 15px;
+        padding-bottom: 15px;
+        border-top: none;
+        margin-bottom: 0;
+    }
+    .schedule-list dt:first-of-type {
+        border-top: none;
+        padding-top: 0;
+    }
+}
+
+/* Discord Section */
+#discord-info .card {
+    text-align: left;
+}
+
+#discord-info .discord-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+#discord-info .discord-icon {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+}
+
+#discord-info .discord-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#discord-info .discord-description h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+#discord-info .discord-features {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#discord-info .discord-features li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+#discord-info .discord-features li::before {
+    content: '✓';
+    color: var(--secondary-color);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#discord-info .discord-support {
+    margin-top: 30px;
+    font-weight: 600;
+    text-align: center;
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    #discord-info .discord-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    #discord-info .discord-description {
+        margin-top: 30px;
+    }
+    #discord-info .discord-features li {
+        text-align: left;
+    }
+}
