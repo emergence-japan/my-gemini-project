@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>領収書発行フォーム - エマージェンス・ジャパン合同会社</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #4c6ef5 0%, #6c5ce7 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    
+    .form-content {
+      padding: 30px;
+    }
+    
+    .info-section {
+      background: #f8f9ff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-left: 4px solid #4c6ef5;
+    }
+    
+    .info-section h2 {
+      color: #4c6ef5;
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .info-section h2::before {
+      content: "ℹ️";
+      margin-right: 8px;
+    }
+    
+    .info-grid {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .info-item {
+      display: flex;
+      padding: 8px 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .info-item:last-child {
+      border-bottom: none;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      color: #495057;
+      min-width: 100px;
+    }
+    
+    .info-value {
+      color: #212529;
+      font-weight: 500;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #495057;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .required {
+      color: #dc3545;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: #4c6ef5;
+      box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.1);
+    }
+    
+    .form-control::placeholder {
+      color: #adb5bd;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #4c6ef5 0%, #6c5ce7 100%);
+      color: white;
+      padding: 15px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(76, 110, 245, 0.3);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .loading {
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .result {
+      display: none;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .result.success {
+      background: #d1e7dd;
+      border: 1px solid #a3cfbb;
+      color: #0a3622;
+    }
+    
+    .result.error {
+      background: #f8d7da;
+      border: 1px solid #f1aeb5;
+      color: #58151c;
+    }
+    
+    .result h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .download-link {
+      display: inline-block;
+      background: #198754;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+    }
+    
+    .download-link:hover {
+      background: #146c43;
+    }
+    
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #6c757d;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .header {
+        padding: 20px;
+      }
+      
+      .header h1 {
+        font-size: 20px;
+      }
+      
+      .form-content {
+        padding: 20px;
+      }
+      
+      .info-section {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>領収書発行フォーム</h1>
+      <p><?!= company ?></p>
+    </div>
+    
+    <div class="form-content">
+      <div class="info-section">
+        <h2>領収書情報</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">金額:</span>
+            <span class="info-value">¥<?!= Number(amount).toLocaleString() ?> (税込)</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">但し書き:</span>
+            <span class="info-value"><?!= description ?></span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">発行者:</span>
+            <span class="info-value"><?!= company ?></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 通常のHTMLフォームを使用（JavaScript無し） -->
+      <form method="POST" action="">
+        <input type="hidden" name="token" value="<?!= token ?>">
+        <input type="hidden" name="action" value="post">
+        
+        <div class="form-group">
+          <label for="bill_to">
+            宛名 <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="bill_to" 
+            name="bill_to" 
+            class="form-control" 
+            placeholder="例: 株式会社サンプル　御中"
+            required
+            maxlength="100"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="customer_email">
+            メールアドレス（任意）
+          </label>
+          <input 
+            type="email" 
+            id="customer_email" 
+            name="customer_email" 
+            class="form-control" 
+            placeholder="example@company.com"
+            maxlength="100"
+          >
+          <small style="color: #6c757d; font-size: 12px; margin-top: 4px; display: block;">
+            ご入力いただくと、領収書PDFをメールでもお送りします。
+          </small>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          領収書を発行する
+        </button>
+      </form>
+    </div>
+    
+    <div class="footer">
+      <p>© 2024 エマージェンス・ジャパン合同会社. All rights reserved.</p>
+      <p>本システムはSSL暗号化通信により保護されています。</p>
+    </div>
+  </div>
+
+  <script>
+    // 宛名入力フィールドにフォーカス
+    document.getElementById('bill_to').focus();
+    
+    // リアルタイム入力検証
+    document.getElementById('bill_to').addEventListener('input', function(e) {
+      const value = e.target.value.trim();
+      const submitBtn = document.querySelector('.submit-btn');
+      
+      if (value.length > 0) {
+        submitBtn.style.opacity = '1';
+      } else {
+        submitBtn.style.opacity = '0.6';
+      }
+    });
+  </script>
+</body>
+</html>

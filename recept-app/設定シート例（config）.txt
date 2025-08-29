@@ -1,0 +1,117 @@
+【Googleスプレッドシート設定シート（config）】
+
+以下の設定をGoogleスプレッドシートの「config」シートに設定してください。
+A列にkey、B列にvalueを入力します。
+
+===========================================
+
+A列（key）                  B列（value）
+secret_key                  your_secret_key_here_min_32_chars_recommended
+pdf_folder_id              1234567890abcdefghijklmnopqrstuv
+doc_template_id            abcdefghijklmnopqrstuvwxyz1234567
+from_name                  エマージェンス・ジャパン合同会社
+from_email                 info@emergence-japan.com
+invoice_no                 T7120003014136
+company                    エマージェンス・ジャパン合同会社
+address                    〒550-0014 大阪府大阪市西区北堀江４−４−６
+tel                        090-1575-5068
+description                生成ＡＩセミナー料として
+amount_taxin               11000
+amount_taxout              10000
+tax                        1000
+pay_method                 銀行振込
+
+===========================================
+
+【詳細説明】
+
+1. secret_key
+   - トークン署名に使用する秘密鍵
+   - 32文字以上の長いランダム文字列を設定
+   - 例：abcdef1234567890ghijklmnopqrstuvwxyz
+   - セキュリティのため定期的に変更推奨
+
+2. pdf_folder_id
+   - 生成したPDFを保存するGoogleドライブフォルダのID
+   - フォルダURLの最後の部分：
+     https://drive.google.com/drive/folders/【ここの文字列】
+
+3. doc_template_id
+   - 領収書テンプレートのGoogleドキュメントID
+   - ドキュメントURLの一部：
+     https://docs.google.com/document/d/【ここの文字列】/edit
+
+4. from_name
+   - メール送信時の送信者名
+   - 会社の正式名称
+
+5. from_email
+   - メール送信時の送信者メールアドレス
+   - 会社の代表メールアドレス
+
+6. invoice_no
+   - 適格請求書発行事業者登録番号
+   - インボイス制度対応のため必須
+
+7. company
+   - 会社名（領収書に印字される）
+
+8. address
+   - 会社住所（郵便番号含む）
+
+9. tel
+   - 会社電話番号
+
+10. description
+    - 但し書き（領収書の用途）
+
+11. amount_taxin
+    - 税込金額（数値のみ）
+
+12. amount_taxout
+    - 税抜金額（数値のみ）
+
+13. tax
+    - 消費税額（数値のみ）
+
+14. pay_method
+    - 支払い方法
+
+【configシート作成手順】
+
+1. Googleスプレッドシートを新規作成
+2. シート名を「config」に変更
+3. A1に「key」、B1に「value」と入力（ヘッダー）
+4. A2以降に上記のkeyとvalueを順番に入力
+5. 同じスプレッドシート内に「ledger」シートも作成
+
+【ledgerシート構成】
+A列：order_id（注文ID）
+B列：email（顧客メールアドレス）
+C列：token（生成されたトークン）
+D列：token_expiry（トークン有効期限）
+E列：issued（発行済みフラグ）
+F列：issued_at（発行日時）
+G列：receipt_no（領収書番号）
+H列：bill_to（宛名）
+I列：pay_date（支払日）
+J列：reissue（再発行フラグ）
+K列：downloads（ダウンロード回数）
+
+【セキュリティ注意事項】
+- secret_keyは絶対に外部に漏らさない
+- スプレッドシートの共有設定は必要最小限に
+- 定期的にアクセスログを確認
+- 不要になったトークンは削除
+
+【初期設定後の確認事項】
+✓ Googleドライブフォルダが存在し、書き込み権限がある
+✓ Googleドキュメントテンプレートが存在し、編集権限がある
+✓ Gmail送信権限が有効
+✓ Apps Scriptの実行権限が設定済み
+✓ configシートの各値が正しく入力されている
+
+【トラブルシューティング】
+- PDF生成エラー → doc_template_idとpdf_folder_idを確認
+- メール送信エラー → from_emailの権限を確認
+- トークンエラー → secret_keyの文字数を確認（32文字以上推奨）

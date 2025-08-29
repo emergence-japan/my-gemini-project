@@ -1,0 +1,21 @@
+// doPost関数内の PDF生成部分を以下に置き換えてください
+// 234行目〜246行目あたりの部分
+
+    // PDF生成（一時的に無効化）
+    /*
+    const pdfBlob = generateReceiptPDF({
+      receiptNo: receiptNo,
+      billTo: billTo,
+      payDate: orderRow[8] || now,
+      isReissue: isReissue,
+      config: config
+    });
+    
+    // Googleドライブに保存
+    const folder = DriveApp.getFolderById(config.pdf_folder_id);
+    const fileName = `${receiptNo}_${billTo.replace(/[\/\\:*?"<>|]/g, '_')}.pdf`;
+    const file = folder.createFile(pdfBlob.setName(fileName));
+    */
+    
+    // 仮のファイル情報（テスト用）
+    const file = { getDownloadUrl: () => '#テスト用URL' };
