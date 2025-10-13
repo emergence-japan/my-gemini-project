@@ -1,11 +1,11 @@
 /* 1. Global Styles & Variables */
 :root {
-    --primary-color: #0052D4; /* A deep, trustworthy blue */
-    --secondary-color: #FF8C00; /* A vibrant, energetic orange */
-    --dark-color: #2c3e50; /* A softer black */
-    --light-color: #ecf0f1; /* A light grey background */
+    --primary-color: #D35400; /* 落ち着いたオレンジ */
+    --secondary-color: #F39C12; /* 明るい黄色 */
+    --dark-color: #4A3B31; /* ダークブラウン */
+    --light-color: #FDF5E6; /* 柔らかいアイボリー */
     --white-color: #ffffff;
-    --text-color: #34495e;
+    --text-color: #4A3B31; /* ダークブラウン */
     --font-family: 'Poppins', sans-serif;
     --box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); /* New subtle shadow */
     --border-radius: 15px;
@@ -108,7 +108,7 @@ header h1 {
 
 /* 5. Hero Section (#first-view) */
 #first-view {
-    background: linear-gradient(45deg, var(--primary-color), #6a11cb);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     color: var(--white-color);
     text-align: center;
     padding: 100px 0;
@@ -182,11 +182,11 @@ header h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
 }
 .cta-button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(255, 140, 0, 0.5);
+    box-shadow: 0 12px 35px rgba(243, 156, 18, 0.5);
     color: var(--white-color);
 }
 
