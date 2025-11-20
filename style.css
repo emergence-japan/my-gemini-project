@@ -436,10 +436,12 @@ footer a {
     h2 { font-size: 2rem; }
     #first-view h2 { font-size: 2.8rem; }
 
-    /* 単語の途中で改行されるのを防ぐ */
+    /* 日本語の自然な改行を設定 */
     #problem h2,
     #problem ul li {
-        word-break: keep-all;
+        word-break: normal;
+        overflow-wrap: break-word;
+        line-break: strict;
     }
 
     .card {
