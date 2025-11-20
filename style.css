@@ -436,12 +436,11 @@ footer a {
     h2 { font-size: 2rem; }
     #first-view h2 { font-size: 2.8rem; }
 
-    /* 日本語の自然な改行を設定 */
+    /* 日本語の改行を適切に設定 */
     #problem h2,
     #problem ul li {
-        word-break: normal;
-        overflow-wrap: break-word;
-        line-break: strict;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
 
     .card {
