@@ -1,19 +1,20 @@
 /* 1. Global Styles & Variables */
 :root {
-    --primary-color: #D35400; /* 落ち着いたオレンジ */
-    --secondary-color: #F39C12; /* 明るい黄色 */
-    --dark-color: #4A3B31; /* ダークブラウン */
-    --light-color: #FDF5E6; /* 柔らかいアイボリー */
+    --primary-color: #222222; /* Dark Charcoal */
+    --secondary-color: #c5a578; /* Gold/Brass */
+    --dark-color: #222222; /* Dark Charcoal */
+    --light-color: #f8f9fa; /* Off-white */
     --white-color: #ffffff;
-    --text-color: #4A3B31; /* ダークブラウン */
-    --font-family: 'Poppins', sans-serif;
-    --box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); /* New subtle shadow */
-    --border-radius: 15px;
+    --text-color: #333333; /* Dark Gray for text */
+    --font-family-body: 'Lato', sans-serif;
+    --font-family-heading: 'Cormorant Garamond', serif;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    --border-radius: 8px; /* Slightly smaller border radius */
 }
 
 /* 2. Base & Typography */
 body {
-    font-family: var(--font-family);
+    font-family: var(--font-family-body);
     line-height: 1.8;
     margin: 0;
     padding: 0;
@@ -28,8 +29,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
     font-weight: 700;
-    color: var(--dark-color);
+    color: var(--primary-color);
     margin-top: 0;
 }
 
@@ -44,7 +46,8 @@ a {
     transition: color 0.3s ease;
 }
 a:hover {
-    color: var(--primary-color);
+    filter: brightness(1.2);
+    color: var(--secondary-color);
 }
 
 /* 3. Header */
@@ -55,7 +58,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 3px solid var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
 }
 
 header .container {
@@ -71,7 +74,7 @@ header .container {
 }
 
 header h1 {
-    color: var(--dark-color); /* Use dark-color for text */
+    color: var(--primary-color); /* Use dark-color for text */
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
@@ -83,7 +86,7 @@ header h1 {
     position: relative;
 }
 .section-bg {
-    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    background: var(--light-color);
 }
 
 .card {
@@ -103,12 +106,12 @@ header h1 {
 }
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
 }
 
 /* 5. Hero Section (#first-view) */
 #first-view {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     color: var(--white-color);
     text-align: center;
     padding: 100px 0;
@@ -173,8 +176,8 @@ header h1 {
 /* 6. CTA Button */
 .cta-button {
     display: inline-block;
-    background: linear-gradient(45deg, var(--secondary-color), #f9d423);
-    color: var(--white-color);
+    background: var(--secondary-color);
+    color: var(--primary-color);
     padding: 18px 40px;
     border-radius: 50px;
     font-weight: 700;
@@ -182,12 +185,13 @@ header h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+    box-shadow: 0 8px 25px rgba(197, 165, 120, 0.25);
 }
 .cta-button:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(243, 156, 18, 0.5);
-    color: var(--white-color);
+    box-shadow: 0 12px 35px rgba(197, 165, 120, 0.35);
+    filter: brightness(1.1);
+    color: var(--primary-color);
 }
 
 /* 7. Specific Section Styling */
