@@ -231,8 +231,11 @@ h2.decorated::after {
     line-height: 1.5;
 }
 
-/* Price Section - readable font for numbers */
-#price h2 {
+/* Sections with numbers - readable font */
+#first-view h2,
+#first-view p,
+#price h2,
+#seminar-schedule h2 {
     font-family: var(--font-family-body);
 }
 
@@ -318,6 +321,7 @@ h2.decorated::after {
     justify-content: center;
     font-weight: bold;
     font-size: 1.2rem;
+    font-family: var(--font-family-body);
     border: 4px solid var(--white-color);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     z-index: 1; /* Ensure it's above the timeline */
@@ -728,37 +732,49 @@ footer a {
 /* Seminar Schedule Section */
 #seminar-schedule .card {
     text-align: left;
+    padding: 50px;
 }
 
 .schedule-list {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin: 0;
     padding: 0;
 }
 
 .schedule-list dt {
-    font-weight: 600;
-    color: var(--primary-color);
-    white-space: nowrap;
-    padding-top: 15px;
-    border-top: 1px solid var(--light-color);
+    display: none;
 }
 
 .schedule-list dd {
-    margin-left: 0;
-    padding-top: 15px;
-    border-top: 1px solid var(--light-color);
+    margin: 0;
+    background: linear-gradient(135deg, rgba(197, 165, 120, 0.08) 0%, rgba(197, 165, 120, 0.02) 100%);
+    padding: 20px 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
 }
 
-/* First item no border */
-.schedule-list dt:first-of-type,
-.schedule-list dd:first-of-type {
-    border-top: none;
-    padding-top: 0;
+.schedule-list dd::before {
+    content: attr(data-date);
+    display: block;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
+.schedule-list dd:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 16px rgba(197, 165, 120, 0.2);
+    background: linear-gradient(135deg, rgba(197, 165, 120, 0.12) 0%, rgba(197, 165, 120, 0.04) 100%);
+}
 
 .schedule-note {
     text-align: center;
@@ -766,27 +782,34 @@ footer a {
     opacity: 0.9;
     margin-top: 40px;
     margin-bottom: 0;
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: 8px;
 }
 
 @media (max-width: 768px) {
-    .schedule-list {
-        grid-template-columns: 1fr;
-        gap: 0;
+    #seminar-schedule .card {
+        padding: 30px 20px;
     }
-    .schedule-list dt {
-        margin-bottom: 5px;
-        border-top: 1px solid var(--light-color);
-        padding-top: 15px;
-    }
+
     .schedule-list dd {
-        padding-left: 15px;
-        padding-bottom: 15px;
-        border-top: none;
-        margin-bottom: 0;
+        padding: 18px 20px;
+        font-size: 1rem;
     }
-    .schedule-list dt:first-of-type {
-        border-top: none;
-        padding-top: 0;
+
+    .schedule-list dd::before {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #seminar-schedule .card {
+        padding: 25px 15px;
+    }
+
+    .schedule-list dd {
+        padding: 15px 18px;
+        font-size: 0.95rem;
     }
 }
 
