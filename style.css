@@ -231,6 +231,11 @@ h2.decorated::after {
     line-height: 1.5;
 }
 
+/* Price Section - readable font for numbers */
+#price h2 {
+    font-family: var(--font-family-body);
+}
+
 /* Vibe Coding Section */
 #vibe-coding .card {
     text-align: center;
@@ -439,8 +444,8 @@ footer a {
     /* 日本語の改行を適切に設定 */
     #problem h2,
     #problem ul li {
-        word-break: break-all;
-        overflow-wrap: anywhere;
+        word-break: normal;
+        overflow-wrap: break-word;
         min-width: 0; /* flexアイテムの最小幅を0に設定 */
     }
 
