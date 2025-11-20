@@ -441,6 +441,7 @@ footer a {
     #problem ul li {
         word-break: break-word;
         overflow-wrap: anywhere;
+        min-width: 0; /* flexアイテムの最小幅を0に設定 */
     }
 
     .card {
