@@ -436,6 +436,12 @@ footer a {
     h2 { font-size: 2rem; }
     #first-view h2 { font-size: 2.8rem; }
 
+    /* 単語の途中で改行されるのを防ぐ */
+    #problem h2,
+    #problem ul li {
+        word-break: keep-all;
+    }
+
     .card {
         padding: 30px;
     }
