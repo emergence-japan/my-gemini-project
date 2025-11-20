@@ -439,7 +439,7 @@ footer a {
     /* 日本語の改行を適切に設定 */
     #problem h2,
     #problem ul li {
-        word-break: break-word;
+        word-break: break-all;
         overflow-wrap: anywhere;
         min-width: 0; /* flexアイテムの最小幅を0に設定 */
     }
