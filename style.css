@@ -18,7 +18,9 @@ body {
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    background-color: var(--light-color);
+    background-color: #f8f9fa; /* Fallback */
+    background-image: radial-gradient(at 0% 0%, hsla(200, 20%, 95%, 1) 0px, transparent 50%),
+                      radial-gradient(at 95% 15%, hsla(283, 19%, 96%, 1) 0px, transparent 50%);
     color: var(--text-color);
 }
 
@@ -86,11 +88,14 @@ header h1 {
     position: relative;
 }
 .section-bg {
-    background: var(--light-color);
+    background: transparent;
 }
 
 .card {
-    background: var(--white-color);
+    background: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
+    -webkit-backdrop-filter: blur(10px); /* Frosted glass effect for Safari */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -111,11 +116,28 @@ header h1 {
 
 /* 5. Hero Section (#first-view) */
 #first-view {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, #3a3a3a 0%, #222222 100%); /* グラデーション背景 */
     color: var(--white-color);
     text-align: center;
     padding: 100px 0;
-    overflow: hidden; /* For divider */
+    position: relative; /* ::before擬似要素の基準になるように */
+    overflow: hidden;
+}
+
+#first-view::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(197, 165, 120, 0.08) 0%, rgba(197, 165, 120, 0) 70%);
+    z-index: 0;
+}
+
+#first-view .container {
+    position: relative; /* コンテンツが擬似要素より上に来るように */
+    z-index: 1;
 }
 
 .hero-main-title-line {
@@ -223,12 +245,16 @@ h2.decorated::after {
     font-size: 1.1rem;
 }
 .list-section li::before {
-    content: '✓';
+    content: ''; /* Remove the checkmark character */
+    display: none; /* Hide the pseudo-element completely */
+}
+.list-section li i {
     color: var(--secondary-color);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-right: 15px;
-    line-height: 1.5;
+    font-size: 1.3rem; /* Slightly smaller than the old checkmark for balance */
+    margin-right: 12px; /* Adjust spacing */
+    width: 25px; /* Fixed width for alignment */
+    text-align: center; /* Center icon within its space */
+    flex-shrink: 0; /* Prevent icon from shrinking on small screens */
 }
 
 /* Sections with numbers - readable font */
